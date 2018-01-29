@@ -4,5 +4,6 @@ class CreateFirearms < ActiveRecord::Migration[5.1]
       t.string :name
       t.integer :round_count
       t.integer :user_id
+    end
   end
 end

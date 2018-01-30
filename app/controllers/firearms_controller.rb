@@ -38,16 +38,18 @@ class FirearmsController < ApplicationController
       else
         redirect to '/firearms'
       end
+    else
       redirect to '/login'
     end
   end
 
+
   patch '/firearms/:id' do
-    @firearm = Firearm.find_by_id(params[:id])
-    @firearm.name = params[:name]
-    @firearm.round_count = params[:round_count]
-    @firearm.save
-    redirect to "/firearms/#{@firearm.id}"
+      @firearm = Firearm.find_by_id(params[:id])
+      @firearm.name = params[:name]
+      @firearm.round_count = params[:round_count]
+      @firearm.save
+      redirect to "/firearms/#{@firearm.id}"
   end
 
   delete '/firearms/:id/delete' do

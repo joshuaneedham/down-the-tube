@@ -21,6 +21,15 @@ class FirearmsController < ApplicationController
     redirect to "/firearms/#{@firearm.id}"
   end
 
+  get '/firearms/:id' do
+    if logged_in?
+      @firearm = Firearm.find_by_id(params[:id])
+      erb :'firearms/show_firearm'
+    else
+      redirect to '/login'
+    end
+  end
+
   get '/firearms/:id/edit' do
     if logged_in?
       @firearm = Firearm.find_by_id(params[:id])

@@ -1,4 +1,5 @@
 <% if logged_in? %>
+<% if @firearm.user_id == current_user.id %>
 <div class="container">
   <div class="row">
     <blockquote class="blockquote">
@@ -9,7 +10,6 @@
     </blockquote>
   </div>
   <div class="row">
-    <% if @firearm.user_id == current_user.id %>
     <div class="col-2">
       <a class="btn btn-outline-warning btn-sm" role="button" href="/firearms/<%= @firearm.id %>/edit">Edit Firearm </a>
     </div>

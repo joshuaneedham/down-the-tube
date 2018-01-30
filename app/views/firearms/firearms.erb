@@ -9,6 +9,7 @@
     </tr>
   </thead>
   <% @firearms.each do |firearm| %>
+  <% if firearm.user_id == current_user.id %>
   <tbody>
     <tr>
       <th scope="row"><a href="/firearms/<%= firearm.id %>"><%= firearm.id %></a></th>
@@ -22,6 +23,7 @@
         </form></div></div></td><% end %>
       </tr>
     </tbody>
+    <% end %>
     <% end %>
   </table>
   <a class="btn btn-outline-success" role="button" href="/firearms/new">Add new firearm</a>

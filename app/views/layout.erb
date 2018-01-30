@@ -11,10 +11,10 @@
   <body>
 
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-      <h5 class="my-0 mr-md-auto font-weight-normal">DownTheTu.be</h5>
+      <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/">DownTheTu.be</a></h5>
       <nav class="my-2 my-md-0 mr-md-3">
         <% if logged_in? %>
-        <!-- <a class="btn btn-outline-success" href="/tweets/new">New Tweet</a> -->
+        <a class="btn btn-outline-success" href="/firearms">All Firearms</a>
         <a class="btn btn-outline-warning" href="/logout">Logout</a>
       </nav>
       <% else %>
@@ -24,9 +24,9 @@
     </div>
     <div class="text-center">
       <% if logged_in? %>
-      <h1>Welcome, <%= current_user.username %></h1>
+      <h1 class="display-3">Welcome, <%= current_user.username %></h1>
       <% else %>
-      <h1>Welcome to DownTheTu.be!</h1>
+      <h1 class="display-3">Welcome to DownTheTu.be!</h1>
       <% end %>
     </div>
     <div class="container">

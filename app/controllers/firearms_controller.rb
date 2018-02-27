@@ -9,7 +9,7 @@ class FirearmsController < ApplicationController
     end
   end
 
-    # Form for creating a new firearm
+  # Form for creating a new firearm
   get '/firearms/new' do
     if logged_in?
       erb :'/firearms/create_firearm'
@@ -18,13 +18,13 @@ class FirearmsController < ApplicationController
     end
   end
 
-    # POST Action for saving firearm form to DB
+  # POST Action for saving firearm form to DB
   post '/firearms' do
-    @firearm = current_user.firearms.create(:name => params["name"], :round_count => params["round_count"])
+    @firearm = current_user.firearms.create(params[:firearm])
     redirect to "/firearms/#{@firearm.id}"
   end
 
-    # Individual Firearm View Page
+  # Individual Firearm View Page
   get '/firearms/:id' do
     if logged_in?
       @firearm = Firearm.find_by_id(params[:id])
@@ -34,7 +34,7 @@ class FirearmsController < ApplicationController
     end
   end
 
-    # Form page for editing a firearm
+  # Form page for editing a firearm
   get '/firearms/:id/edit' do
     if logged_in?
       @firearm = Firearm.find_by_id(params[:id])
@@ -48,17 +48,18 @@ class FirearmsController < ApplicationController
     end
   end
 
-
-    # PATCH method for updating existing firearm record in DB requires "_method"
+  # PATCH method for updating existing firearm record in DB requires "_method"
   patch '/firearms/:id' do
-      @firearm = Firearm.find_by_id(params[:id])
-      @firearm.name = params[:name]
-      @firearm.round_count = params[:round_count]
-      @firearm.save
+    @firearm = Firearm.find_by_id(params[:id])
+    if @firearm.user_id == current_user.id
+      @firearm.update(params[:firearm])
       redirect to "/firearms/#{@firearm.id}"
+    else
+      redirect to '/login'
+    end
   end
 
-    # Deletes firearm record from DB
+  # Deletes firearm record from DB
   delete '/firearms/:id/delete' do
     if logged_in?
       @firearm = Firearm.find_by_id(params[:id])
@@ -72,5 +73,4 @@ class FirearmsController < ApplicationController
       redirect to '/login'
     end
   end
-
 end

@@ -1,0 +1,28 @@
+<h1>All Firearms</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Rifle</th>
+      <th scope="col">Round Count</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <% @firearms.each do |firearm| %>
+  <% if firearm.user_id == current_user.id %>
+  <tbody>
+    <tr>
+      <th scope="row"><a href="/firearms/<%= firearm.id %>"><%= firearm.id %></a></th>
+      <td><%= firearm.name %></td>
+      <td><%= firearm.round_count %></td>
+      <td><div class="row"><div class="col-2"><a class="btn btn-outline-warning btn-sm" href="/firearms/<%= firearm.id %>/edit">Edit</a></div>
+      <div class="col-2">
+        <form method="post" action="/firearms/<%= firearm.id %>/delete">
+          <input id="hidden" type="hidden" name="_method" value="DELETE">
+          <input class="btn btn-outline-danger btn-sm" type="submit" value="Delete">
+        </form></div></div></td><% end %>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  <a class="btn btn-outline-success" role="button" href="/firearms/new">Add new firearm</a>

@@ -1,0 +1,7 @@
+<h3>Here are your firearms, <%= @user.username %></h3>
+<% @user.firearms.each do |firearm| %>
+<blockquote class="blockquote">
+  <p><a href="/firearms/<%= firearm.id %>"><%= firearm.id %>: </a><%= firearm.name %></p>
+</blockquote>
+<% end %>
+<a class="btn btn-outline-success" role="button" href="/firearms/new">Add new firearm</a>

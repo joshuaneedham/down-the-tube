@@ -1,9 +1,0 @@
-<h2>Edit Firearm</h2>
-<form action="/firearms/<%= @firearm.id %>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  <label>Current Name: <%= @firearm.name %> <br>
-  </label><br><input type='text' name='firearm[name]' value="<%= @firearm.name %>" required><br>
-  <label>Round Count: <%= @firearm.round_count %> <br>
-  </label><br><input type='text' name='firearm[round_count]' value="<%= @firearm.round_count %>" required><br>
-  <input class="btn btn-primary" type="submit" id="submit" name="submit" value="Update">
-</form>

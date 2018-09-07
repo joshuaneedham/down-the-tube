@@ -19,3 +19,6 @@ Firearm - Fields to include Name, Round Count(number of rounds fired)
 Users have many firearms and firearms belong to a user.
 
 Once a user has signed up and logged in they begin by adding a firearm and including the current number of rounds fired.
+
+
+To start the app run `rackup config.ru` after running `rake db:migrate`
